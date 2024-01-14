@@ -4,7 +4,7 @@ curl http://localhost:3000/metadata/
 #####
 
 name: add project
-curl http://localhost:3000/metadata/addProject\
+curl http://localhost:3005/metadata/addProject\
   -X POST \
   -H "Content-Type: application/json" \
   -d '{"name": "test", "description": "test"}'
