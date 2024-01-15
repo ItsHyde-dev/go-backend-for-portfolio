@@ -5,6 +5,7 @@ import (
 
 	"github.com/gofiber/fiber/v2"
 	"hyde.portfolio/utils"
+  "hyde.portfolio/database/models/projects"
 )
 
 func getMetadata(c *fiber.Ctx) error {
@@ -33,3 +34,21 @@ func addProject(c *fiber.Ctx) error {
     "message": "Added new project",
   })
 }
+
+func getProjects(c *fiber.Ctx) error {
+
+  fmt.Println("Getting Projects")
+
+  projects, err := projectsModel.FindAll();
+  if err != nil {
+    return c.Status(400).JSON(fiber.Map{
+      "message": err.Error(),
+    })
+  }
+
+  return c.JSON(fiber.Map{
+    "data": projects,
+  })
+
+}
+

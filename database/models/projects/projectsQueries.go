@@ -6,7 +6,7 @@ import (
 	"hyde.portfolio/database"
 )
 
-func create(project *Project) (sql.Result, error) {
+func Create(project *Project) (sql.Result, error) {
 	query := `
     INSERT INTO projects (title, description, url, technologies)
     VALUES (
@@ -15,4 +15,16 @@ func create(project *Project) (sql.Result, error) {
   `
 
 	return database.GetConnection().NamedExec(query, project)
+}
+
+func FindAll() ([]Project, error) {
+  var projects []Project
+
+  query := `
+    SELECT * from projects
+  `
+
+  err := database.GetConnection().Select(&projects, query)
+
+  return projects, err
 }
