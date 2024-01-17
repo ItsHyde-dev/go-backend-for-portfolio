@@ -8,9 +8,9 @@ import (
 
 func Create(project *Project) (sql.Result, error) {
 	query := `
-    INSERT INTO projects (title, description, url, technologies)
+    INSERT INTO projects (title, description, url)
     VALUES (
-      :title, :description, :url, :technologies
+      :title, :description, :url
     )
   `
 
